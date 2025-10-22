@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambientes Virtuais (MUITO IMPORTANTE)
+.venv/
+venv/
+env/
+ENV/
+*.env
+.env
+
+# Arquivos de IDE
+.vscode/
+.idea/
+
+# Saídas (como seu gráfico interativo)
+*.html
