@@ -32,4 +32,5 @@ Este projeto foi desenvolvido em Python 3.12+ em um ambiente WSL (Ubuntu).
 
 ## 4. Bônus
 
-O notebook *Simulação - Bayesiana(Julia).ipynb* contém a simulação de backcasting para **Modelo Bayesiano Hierárquico**, com a finalidade de obter um benchmarking de tempo de execução. Ele não precisa ser executado em WSL>
+O notebook *Simulação - Bayesiana(Julia).ipynb* contém a simulação de backcasting para **Modelo Bayesiano Hierárquico**, com a finalidade de obter um benchmarking de tempo de execução. Ele não precisa ser executado em WSL.
+
