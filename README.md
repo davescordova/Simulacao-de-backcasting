@@ -25,6 +25,9 @@ O pipeline treina, avalia e compara os seguintes modelos:
 4.  **Modelo de Série Temporal Estrutural (UCM)**: Um modelo que decompõe a série em tendência, ciclo e sazonalidade, e usa a dinâmica aprendida para o backcasting (via inversão da série).
 5.  **Modelo Bayesiano Hierárquico**: Um modelo probabilístico (`PyMC`) que inclui uma tendência de passeio aleatório (random walk) para capturar movimentos estocásticos de longo prazo.
 6.  **Otimização Quântica (QAOA)**: Um modelo "proof-of-concept" que usa o Quantum Approximate Optimization Algorithm (QAOA) para *resolver* o problema de regressão linear, demonstrando uma abordagem de otimização híbrida quântico-clássica.
+7.  **Gradient Boosted Trees (YDF/TF-DF/XGBoost)**: Um modelo de machine learning baseado em *boosting*, que constrói árvores sequencialmente para corrigir erros anteriores, conhecido pela alta performance. (Implementado via YDF/TF-DF).
+8.  **Random Forest (YDF/TF-DF/Sklearn)**: Um modelo de machine learning baseado em *bagging*, que constrói múltiplas árvores de decisão independentes e combina suas previsões para robustez. (Implementado via YDF/TF-DF).
+9.  **Autorregressão Vetorial de Médias Móveis com Regressores Exógenos (VARMAX)**: Um modelo econométrico para múltiplas séries temporais que captura interdependências e influências de variáveis externas (adaptado para backcasting univariado com exógenos).
 
 ## 3. Como Executar
 
@@ -33,4 +36,5 @@ Este projeto foi desenvolvido em Python 3.12+ em um ambiente WSL (Ubuntu).
 ## 4. Bônus
 
 O notebook *Simulação - Bayesiana(Julia).ipynb* contém a simulação de backcasting para **Modelo Bayesiano Hierárquico**, com a finalidade de obter um benchmarking de tempo de execução. Ele não precisa ser executado em WSL.
+
 
