@@ -1,40 +1,40 @@
-# Análise Comparativa de Backcasting do Índice de Gini (1872-2022)
+# Comparative Backcasting Analysis of the Gini Index (1872-2022)
 
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![Julia 1.10+](https://img.shields.io/badge/Julia-1.10+-purple.svg)](https://julialang.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 1. Visão Geral
+## 1. Overview
 
-Este projeto é uma simulação econométrica que compara o desempenho de múltiplos modelos estatísticos e de machine learning em uma tarefa de **backcasting** (retroprojeção).
+This project is an econometric simulation that compares the performance of multiple statistical and machine learning models on a **backcasting** task.
 
-O pipeline completo está contido  no notebook *Simulação.ipynb*, que executa as seguintes etapas:
-1.  **Simula** uma série temporal de 151 anos (1872-2022) para o Índice de Gini e covariáveis (PIB, Urbanização, etc.), com regimes estruturais e tendências complexas.
-2.  **Separa** os dados em um período "Moderno" (1976-2022), simulando a disponibilidade de dados (ex: PNAD), e um período "Histórico" (1872-1975), que serve como "verdade oculta" (ground truth).
-3.  **Treina** seis classes diferentes de modelos *exclusivamente* nos dados modernos.
-4.  **Usa** esses modelos para "retro-projetar" (backcast) o período histórico.
-5.  **Compara** as projeções com a "verdade oculta" para determinar qual modelo melhor captura a dinâmica de longo prazo, mesmo com informações limitadas.
+The complete pipeline is contained in the *Simulação.ipynb* notebook, which executes the following steps:
+1.  **Simulates** a 151-year time series (1872-2022) for the Gini Index and covariates (GDP, Urbanization, etc.), featuring structural regimes and complex trends.
+2.  **Splits** the data into a "Modern" period (1976-2022), simulating data availability (e.g., from national surveys like PNAD), and a "Historical" period (1872-1975), which serves as the ground truth.
+3.  **Trains** six different classes of models *exclusively* on the modern data.
+4.  **Uses** these models to "backcast" the historical period.
+5.  **Compares** the projections against the ground truth to determine which model best captures the long-term dynamics, even with limited information.
 
-## 2. Modelos Comparados
+## 2. Models Compared
 
-O pipeline treina, avalia e compara os seguintes modelos:
+The pipeline trains, evaluates, and compares the following models:
 
-1.  **Regressão Linear (OLS)**: O modelo de baseline, assume relações lineares e estáveis.
-2.  **Regressão com Mudança de Regime de Markov (MSR)**: Um modelo econométrico que permite que os coeficientes e a variância mudem de acordo com "estados" ocultos (regimes).
-3.  **Modelos Aditivos Generalizados (GAMs)**: Um modelo de machine learning interpretável que captura relações não-lineares complexas através de *splines*.
-4.  **Modelo de Série Temporal Estrutural (UCM)**: Um modelo que decompõe a série em tendência, ciclo e sazonalidade, e usa a dinâmica aprendida para o backcasting (via inversão da série).
-5.  **Modelo Bayesiano Hierárquico**: Um modelo probabilístico (`PyMC`) que inclui uma tendência de passeio aleatório (random walk) para capturar movimentos estocásticos de longo prazo.
-6.  **Otimização Quântica (QAOA)**: Um modelo "proof-of-concept" que usa o Quantum Approximate Optimization Algorithm (QAOA) para *resolver* o problema de regressão linear, demonstrando uma abordagem de otimização híbrida quântico-clássica.
-7.  **Gradient Boosted Trees (YDF/TF-DF/XGBoost)**: Um modelo de machine learning baseado em *boosting*, que constrói árvores sequencialmente para corrigir erros anteriores, conhecido pela alta performance. (Implementado via YDF/TF-DF).
-8.  **Random Forest (YDF/TF-DF/Sklearn)**: Um modelo de machine learning baseado em *bagging*, que constrói múltiplas árvores de decisão independentes e combina suas previsões para robustez. (Implementado via YDF/TF-DF).
-9.  **Autorregressão Vetorial de Médias Móveis com Regressores Exógenos (VARMAX)**: Um modelo econométrico para múltiplas séries temporais que captura interdependências e influências de variáveis externas (adaptado para backcasting univariado com exógenos).
+1.  **Linear Regression (OLS)**: The baseline model, assuming linear and stable relationships.
+2.  **Markov-Switching Regression (MSR)**: An econometric model that allows coefficients and variance to change according to hidden "states" (regimes).
+3.  **Generalized Additive Models (GAMs)**: An interpretable machine learning model that captures complex non-linear relationships using *splines*.
+4.  **Structural Time Series Model (UCM)**: A model that decomposes the series into trend, cycle, and seasonality, and uses the learned dynamics for backcasting (by inverting the series).
+5.  **Hierarchical Bayesian Model**: A probabilistic model (`PyMC`) that includes a random walk trend to capture long-term stochastic movements.
+6.  **Quantum Optimization (QAOA)**: A proof-of-concept model that uses the Quantum Approximate Optimization Algorithm (QAOA) to *solve* the linear regression problem, demonstrating a hybrid quantum-classical optimization approach.
+7.  **Gradient Boosted Trees (YDF/TF-DF/XGBoost)**: A machine learning model based on *boosting*, which sequentially builds trees to correct previous errors, known for high performance. (Implemented via YDF/TF-DF).
+8.  **Random Forest (YDF/TF-DF/Sklearn)**: A machine learning model based on *bagging*, which builds multiple independent decision trees and combines their predictions for robustness. (Implemented via YDF/TF-DF).
+9.  **Vector Autoregression Moving-Average with Exogenous Regressors (VARMAX)**: An econometric model for multiple time series that captures interdependencies and influences from external variables (adapted for univariate backcasting with exogenous variables).
 
-## 3. Como Executar
+## 3. How to Run
 
-Este projeto foi desenvolvido em Python 3.12+ em um ambiente WSL (Ubuntu).
+This project was developed in Python 3.12+ in a WSL (Ubuntu) environment.
 
-## 4. Bônus
+## 4. Bonus
 
-O notebook *Simulação - Bayesiana(Julia).ipynb* contém a simulação de backcasting para **Modelo Bayesiano Hierárquico**, com a finalidade de obter um benchmarking de tempo de execução. Ele não precisa ser executado em WSL.
+The *Simulação - Bayesiana(Julia).ipynb* notebook contains the backcasting simulation for the **Hierarchical Bayesian Model**, for the purpose of runtime benchmarking. It does not need to be run in WSL.
 
 
