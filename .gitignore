@@ -18,3 +18,6 @@ ENV/
 
 # Saídas (como seu gráfico interativo)
 *.html
+
+# Exceções (Arquivos que EU QUERO versionar)
+!grafico_backcasting_interativo_k1lags_full.html
